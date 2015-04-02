@@ -50,7 +50,7 @@ class InImageView: UIImageView {
         subtitleLabel.userInteractionEnabled = true
         self.addSubview(subtitleLabel)
         
-        tvStationView = UIImageView(frame: CGRectMake(10, 0, 50 , 40))
+        tvStationView = UIImageView(frame: CGRectMake(10, 0, 50 , 50))
         self.addSubview(tvStationView)
         
         charaterView = UIImageView(frame: CGRectMake(10, 0, 80 , 22))

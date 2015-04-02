@@ -53,6 +53,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         doneButton.addTarget(self, action: "doneTextChange", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(doneButton)
         
+        var changePhoto = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        changePhoto.backgroundColor = UIColor.whiteColor()
+        changePhoto.frame = CGRectMake(0, 0, self.view.bounds.width, 50)
+        
+        changePhoto.center = CGPointMake(self.view.bounds.width/2.0, self.view.frame.size.height - 25)
+        changePhoto.setTitle("Photo", forState: UIControlState.Normal)
+        changePhoto.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        changePhoto.addTarget(self, action: "donePhotoChange", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(changePhoto)
+        
+        
         inImageView.charaterChangeAction = {
             println("Chage Charater")
             self.textView.userInteractionEnabled = true
@@ -71,8 +82,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.doneButton.hidden = false
         }
         
-        showActionSheet()
+
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func donePhotoChange() {
+        showActionSheet()
     }
     
     func doneTextChange() {
