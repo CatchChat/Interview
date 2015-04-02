@@ -13,6 +13,7 @@
 		0AC03B021ACDC5D000B92BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AC03B011ACDC5D000B92BBA /* Images.xcassets */; };
 		0AC03B051ACDC5D000B92BBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC03B031ACDC5D000B92BBA /* LaunchScreen.xib */; };
 		0AC03B111ACDC5D000B92BBA /* InterviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC03B101ACDC5D000B92BBA /* InterviewTests.swift */; };
+		0AC03B1B1ACDC6D400B92BBA /* InImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC03B1A1ACDC6D400B92BBA /* InImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		0AC03B0A1ACDC5D000B92BBA /* InterviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC03B0F1ACDC5D000B92BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AC03B101ACDC5D000B92BBA /* InterviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTests.swift; sourceTree = "<group>"; };
+		0AC03B1A1ACDC6D400B92BBA /* InImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InImageView.swift; path = Source/InImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		0AC03AF71ACDC5D000B92BBA /* Interview */ = {
 			isa = PBXGroup;
 			children = (
+				0AC03B1C1ACDC6D800B92BBA /* Component */,
 				0AC03AFA1ACDC5D000B92BBA /* AppDelegate.swift */,
 				0AC03AFC1ACDC5D000B92BBA /* ViewController.swift */,
 				0AC03AFE1ACDC5D000B92BBA /* Main.storyboard */,
@@ -110,6 +113,14 @@
 				0AC03B0F1ACDC5D000B92BBA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0AC03B1C1ACDC6D800B92BBA /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				0AC03B1A1ACDC6D400B92BBA /* InImageView.swift */,
+			);
+			name = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AC03AFD1ACDC5D000B92BBA /* ViewController.swift in Sources */,
+				0AC03B1B1ACDC6D400B92BBA /* InImageView.swift in Sources */,
 				0AC03AFB1ACDC5D000B92BBA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -326,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -407,6 +419,7 @@
 				0AC03B161ACDC5D000B92BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0AC03B171ACDC5D000B92BBA /* Build configuration list for PBXNativeTarget "InterviewTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +428,7 @@
 				0AC03B191ACDC5D000B92BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
