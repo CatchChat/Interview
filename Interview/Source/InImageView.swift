@@ -38,7 +38,7 @@ class InImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         subtitleLabel = UILabel()
-        subtitleLabel.font = UIFont.systemFontOfSize(13.0)
+        subtitleLabel.font = UIFont.boldSystemFontOfSize(13.0)
         subtitleLabel.textColor = UIColor.whiteColor()
         subtitleLabel.sizeToFit()
         subtitleLabel.shadowColor = UIColor.blackColor()
@@ -50,7 +50,7 @@ class InImageView: UIImageView {
         subtitleLabel.userInteractionEnabled = true
         self.addSubview(subtitleLabel)
         
-        tvStationView = UIImageView(frame: CGRectMake(10, 0, 50 , 50))
+        tvStationView = UIImageView(frame: CGRectMake(10, 0, 70 , 50))
         self.addSubview(tvStationView)
         
         charaterView = UIImageView(frame: CGRectMake(10, 0, 80 , 22))

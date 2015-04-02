@@ -55,13 +55,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         var changePhoto = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         changePhoto.backgroundColor = UIColor.whiteColor()
-        changePhoto.frame = CGRectMake(0, 0, self.view.bounds.width, 50)
+        changePhoto.frame = CGRectMake(0, 0, self.view.bounds.width/2.0, 50)
         
-        changePhoto.center = CGPointMake(self.view.bounds.width/2.0, self.view.frame.size.height - 25)
+        changePhoto.center = CGPointMake(self.view.bounds.width/4.0, self.view.frame.size.height - 25)
         changePhoto.setTitle("Photo", forState: UIControlState.Normal)
         changePhoto.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         changePhoto.addTarget(self, action: "donePhotoChange", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(changePhoto)
+        
+        var savePhoto = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        savePhoto.backgroundColor = UIColor.whiteColor()
+        savePhoto.frame = CGRectMake(0, 0, self.view.bounds.width/2.0, 50)
+        
+        savePhoto.center = CGPointMake(self.view.bounds.width/2.0+self.view.bounds.width/4.0, self.view.frame.size.height - 25)
+        savePhoto.setTitle("Save", forState: UIControlState.Normal)
+        savePhoto.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        savePhoto.addTarget(self, action: "donePhotoSaveChange", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(savePhoto)
         
         
         inImageView.charaterChangeAction = {
@@ -90,6 +100,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         showActionSheet()
     }
     
+    func donePhotoSaveChange() {
+        // do image magic
+        UIGraphicsBeginImageContextWithOptions(inImageView.bounds.size, false, UIScreen.mainScreen().scale)
+        var resizedContext = UIGraphicsGetCurrentContext()
+        inImageView.layer.renderInContext(resizedContext)
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        // reset Frame of view to origin
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+    
     func doneTextChange() {
         
         switch self.textView.tag{
@@ -102,6 +123,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
         
         self.inImageView.previewImage()
+        
+        textView.endEditing(true)
     }
     
     func showActionSheet() {
