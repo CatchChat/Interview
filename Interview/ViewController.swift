@@ -94,6 +94,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         inImageView.image = image
         
+        inImageView.previewImage()
+        
     }
 
 
