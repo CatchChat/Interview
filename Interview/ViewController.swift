@@ -110,13 +110,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         inImageView.userInteractionEnabled = true
         inImageView.clipsToBounds = true
         self.view.addSubview(inImageView)
-        self.view.addSubview(tempImageView)
+
         
         var offset:CGFloat = 0
         
         if self.view.bounds.height == 480 {
             inImageView.center = CGPointMake(inImageView.center.x, inImageView.center.y-1000)
             offset = 50
+            self.view.addSubview(tempImageView)
         }
         
         imagePicker.delegate = self
