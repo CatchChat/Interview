@@ -38,10 +38,10 @@ class InImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         subtitleLabel = UILabel()
-        subtitleLabel.font = UIFont.boldSystemFontOfSize(13.0)
+        subtitleLabel.font = UIFont.boldSystemFontOfSize(12.0)
         subtitleLabel.textColor = UIColor.whiteColor()
         subtitleLabel.sizeToFit()
-        subtitleLabel.shadowColor = UIColor.blackColor()
+        subtitleLabel.shadowColor = UIColor(white: 0, alpha: 0.5)
         subtitleLabel.shadowOffset = CGSizeMake(1, 1)
         
         var tabSubTitle = UITapGestureRecognizer(target: self, action: "changeSubTitle")
@@ -70,8 +70,9 @@ class InImageView: UIImageView {
         self.addSubview(showView)
         
         tvStationView.contentMode = UIViewContentMode.ScaleAspectFit
-        charaterView.contentMode = UIViewContentMode.ScaleToFill
+        charaterView.contentMode = UIViewContentMode.ScaleAspectFit
         showView.contentMode = UIViewContentMode.ScaleAspectFit
+        charaterView.clipsToBounds = true
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -96,7 +97,7 @@ class InImageView: UIImageView {
 
         subtitleLabel.text = subtitleText
         subtitleLabel.sizeToFit()
-        subtitleLabel.center = CGPointMake(self.frame.size.width/2.0, self.frame.size.height*0.88)
+        subtitleLabel.center = CGPointMake(self.frame.size.width/2.0, self.frame.size.height*0.90)
 
         tvStationView.image = UIImage(named: "cctv")
         
@@ -105,7 +106,7 @@ class InImageView: UIImageView {
         charaterView.frame = CGRectMake(charaterView.frame.origin.x, charaterView.frame.origin.y, 30 + charaterLabel.frame.size.width, 22.0)
         charaterLabel.center = CGPointMake(20 + charaterLabel.frame.size.width/2.0, charaterView.frame.size.height*0.5)
 
-        charaterView.center = CGPointMake(charaterView.center.x, self.frame.size.height*0.88)
+        charaterView.center = CGPointMake(charaterView.center.x, self.frame.size.height*0.78)
 
         charaterView.image = UIImage(named: "name")
         showView.center = CGPointMake(self.frame.size.height*0.8, self.frame.size.height*0.88)
