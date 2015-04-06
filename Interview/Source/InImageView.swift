@@ -67,7 +67,7 @@ class InImageView: UIImageView {
         var tabCharaterLabel = UITapGestureRecognizer(target: self, action: "changeCharater")
         charaterView.addGestureRecognizer(tabCharaterLabel)
         
-        showView = UIImageView(frame: CGRectMake(20, 0, 100 , 100))
+        showView = UIImageView(frame: CGRectMake(20, 0, 50 , 50))
         self.addSubview(showView)
         
         tvStationView.contentMode = UIViewContentMode.ScaleAspectFit
@@ -94,7 +94,6 @@ class InImageView: UIImageView {
     
     
     func previewImage() {
-        
 
         subtitleLabel.text = subtitleText
         subtitleLabel.sizeToFit()
@@ -110,7 +109,9 @@ class InImageView: UIImageView {
         charaterView.center = CGPointMake(charaterView.center.x, self.frame.size.height*0.78)
 
         charaterView.image = UIImage(named: "name")
-        showView.center = CGPointMake(self.frame.size.height*0.8, self.frame.size.height*0.88)
+        
+        showView.image = UIImage(named: "show")
+        showView.center = CGPointMake(self.frame.size.width*0.9, charaterView.center.y)
 
     }
 
