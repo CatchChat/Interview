@@ -18,6 +18,12 @@ enum InterviewState {
     case Save
 }
 
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
+    }
+}
+
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var inImageView: InImageView!
@@ -32,8 +38,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     var changeSubtitle: UIButton!
     
+    @IBOutlet weak var albumImage: UIImageView!
     var savePhoto: UIButton!
     
+    @IBOutlet weak var cameraImage: UIImageView!
     var state: InterviewState = .Default {
         willSet {
             switch newValue {
@@ -74,11 +82,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 changeName.backgroundColor = defaultLightColor
                 changeSubtitle.backgroundColor = defaultLightColor
                 savePhoto.backgroundColor = highLightColor
+                textView.resignFirstResponder()
+                textView.alpha = 0.0
 
             }
             
         }
     }
+
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -106,13 +117,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         textView.font = UIFont.systemFontOfSize(20.0)
         textView.textColor = UIColor(white: 1.0, alpha: 0.5)
         textView.alpha = 0.0
+        textView.returnKeyType = UIReturnKeyType.Done
         textView.addTarget(self, action: "textViewTextChange", forControlEvents: UIControlEvents.EditingChanged)
         self.view.addSubview(textView)
         
         changeName = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         changeName.frame = CGRectMake(0, inImageView.frame.size.height, self.view.bounds.width/3.0, 45)
         changeName.backgroundColor = defaultLightColor
-        changeName.setTitle("Name", forState: UIControlState.Normal)
+        changeName.setTitle("Name".localized, forState: UIControlState.Normal)
         changeName.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
         changeName.addTarget(self, action: "charaterChangeAction", forControlEvents: UIControlEvents.TouchUpInside)
         changeName.alpha = 0.0
@@ -121,7 +133,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         changeSubtitle = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         changeSubtitle.frame = CGRectMake(self.view.bounds.width/3.0, inImageView.frame.size.height, self.view.bounds.width/3.0, 45)
         changeSubtitle.backgroundColor = defaultLightColor
-        changeSubtitle.setTitle("Subtitle", forState: UIControlState.Normal)
+        changeSubtitle.setTitle("Subtitle".localized, forState: UIControlState.Normal)
         changeSubtitle.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
         changeSubtitle.addTarget(self, action: "subtitleChangeAction", forControlEvents: UIControlEvents.TouchUpInside)
         changeSubtitle.alpha = 0.0
@@ -130,7 +142,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         savePhoto = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         savePhoto.frame = CGRectMake(2*self.view.bounds.width/3.0, inImageView.frame.size.height, self.view.bounds.width/3.0, 45)
         savePhoto.backgroundColor = defaultLightColor
-        savePhoto.setTitle("Save", forState: UIControlState.Normal)
+        savePhoto.setTitle("Share".localized, forState: UIControlState.Normal)
         savePhoto.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
         savePhoto.addTarget(self, action: "donePhotoSaveChange", forControlEvents: UIControlEvents.TouchUpInside)
         savePhoto.alpha = 0.0
@@ -153,6 +165,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.textView.becomeFirstResponder()
         }
         
+        
+        cameraImage.userInteractionEnabled = true
+        albumImage.userInteractionEnabled = true
+        
+        let recognizer = UITapGestureRecognizer(target: self, action:Selector("chooseFromCamera:"))
+        let recognizer2 = UITapGestureRecognizer(target: self, action:Selector("chooseFromAlbum:"))
+        // 4
+        cameraImage.addGestureRecognizer(recognizer)
+        
+        albumImage.addGestureRecognizer(recognizer2)
 
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -275,6 +297,11 @@ extension ViewController: UITextFieldDelegate {
         
         var newLength = textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) + string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) - range.length
         return (newLength > 65) ? false : true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textView.resignFirstResponder()
+        return true
     }
     
 }

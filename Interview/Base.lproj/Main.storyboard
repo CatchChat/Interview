@@ -114,6 +114,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zez-WC-MrH"/>
+                    <connections>
+                        <outlet property="albumImage" destination="O3W-oG-iWS" id="u3d-Bt-CYH"/>
+                        <outlet property="cameraImage" destination="EWF-PS-JDp" id="I0Y-yt-8ih"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

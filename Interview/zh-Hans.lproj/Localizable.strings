@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Interview
+
+  Created by kevinzhow on 15/4/6.
+  Copyright (c) 2015年 kevinzhow. All rights reserved.
+*/
+"Name" = "名字";
+"Subtitle" = "字幕";
+"Save" = "分享";
