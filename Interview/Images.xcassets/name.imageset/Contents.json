@@ -7,11 +7,11 @@
         "mode" : "3-part-horizontal",
         "center" : {
           "mode" : "fill",
-          "width" : 2
+          "width" : 1
         },
         "capInsets" : {
-          "right" : 200,
-          "left" : 48
+          "right" : 202,
+          "left" : 41
         }
       }
     }

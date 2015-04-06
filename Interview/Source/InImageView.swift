@@ -97,7 +97,7 @@ class InImageView: UIImageView {
 
         subtitleLabel.text = subtitleText
         subtitleLabel.sizeToFit()
-        subtitleLabel.center = CGPointMake(self.frame.size.width/2.0, self.frame.size.height*0.90)
+        subtitleLabel.center = CGPointMake(self.frame.size.width/2.0, self.frame.size.height*0.92)
 
         tvStationView.image = UIImage(named: "cctv")
         
@@ -108,7 +108,7 @@ class InImageView: UIImageView {
 
         charaterView.center = CGPointMake(charaterView.center.x, self.frame.size.height*0.78)
 
-        charaterView.image = UIImage(named: "name")
+        charaterView.image = UIImage(named: "BG")
         
         showView.image = UIImage(named: "show")
         showView.center = CGPointMake(self.frame.size.width*0.9, charaterView.center.y)
