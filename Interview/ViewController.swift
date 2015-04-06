@@ -38,6 +38,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     var changeSubtitle: UIButton!
     
+    var tempImageView: UIImageView!
+    
     @IBOutlet weak var albumImage: UIImageView!
     var savePhoto: UIButton!
     
@@ -101,15 +103,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.view.backgroundColor = defaultLightColor
         
         inImageView = InImageView(frame: CGRectMake(0, 0, self.view.bounds.width, (self.view.bounds.width/16)*9))
+        tempImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, (self.view.bounds.width/16)*9-50))
+        tempImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        
         inImageView.contentMode = UIViewContentMode.ScaleAspectFill
         inImageView.userInteractionEnabled = true
         inImageView.clipsToBounds = true
         self.view.addSubview(inImageView)
+        self.view.addSubview(tempImageView)
+        
+        var offset:CGFloat = 0
+        
+        if self.view.bounds.height == 480 {
+            inImageView.center = CGPointMake(inImageView.center.x, inImageView.center.y-1000)
+            offset = 50
+        }
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         
-        textView = UITextField(frame: CGRectMake(0, inImageView.frame.size.height + 45.0, self.view.bounds.width, 50.0))
+        textView = UITextField(frame: CGRectMake(0, inImageView.frame.size.height + 45.0 - offset, self.view.bounds.width, 50.0))
         textView.userInteractionEnabled = false
         textView.delegate = self
         textView.backgroundColor = highLightColor
@@ -122,7 +135,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.view.addSubview(textView)
         
         changeName = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        changeName.frame = CGRectMake(0, inImageView.frame.size.height, self.view.bounds.width/3.0, 45)
+        changeName.frame = CGRectMake(0, inImageView.frame.size.height - offset, self.view.bounds.width/3.0, 45)
         changeName.backgroundColor = defaultLightColor
         changeName.setTitle("Name".localized, forState: UIControlState.Normal)
         changeName.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
@@ -131,7 +144,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.view.addSubview(changeName)
         
         changeSubtitle = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        changeSubtitle.frame = CGRectMake(self.view.bounds.width/3.0, inImageView.frame.size.height, self.view.bounds.width/3.0, 45)
+        changeSubtitle.frame = CGRectMake(self.view.bounds.width/3.0, inImageView.frame.size.height - offset , self.view.bounds.width/3.0, 45)
         changeSubtitle.backgroundColor = defaultLightColor
         changeSubtitle.setTitle("Subtitle".localized, forState: UIControlState.Normal)
         changeSubtitle.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
@@ -140,7 +153,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.view.addSubview(changeSubtitle)
         
         savePhoto = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        savePhoto.frame = CGRectMake(2*self.view.bounds.width/3.0, inImageView.frame.size.height, self.view.bounds.width/3.0, 45)
+        savePhoto.frame = CGRectMake(2*self.view.bounds.width/3.0, inImageView.frame.size.height - offset, self.view.bounds.width/3.0, 45)
         savePhoto.backgroundColor = defaultLightColor
         savePhoto.setTitle("Share".localized, forState: UIControlState.Normal)
         savePhoto.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
@@ -190,6 +203,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
         
         self.inImageView.previewImage()
+        updateTempImageView()
+
+    }
+    
+    func updateTempImageView() {
+        UIGraphicsBeginImageContextWithOptions(inImageView.bounds.size, false, UIScreen.mainScreen().scale)
+        var resizedContext = UIGraphicsGetCurrentContext()
+        inImageView.layer.renderInContext(resizedContext)
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        tempImageView.image = image
     }
     
     func charaterChangeAction() {
@@ -219,22 +244,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
         self.presentViewController(activityViewController, animated: true, completion: nil)
-    }
-    
-    func doneTextChange() {
-        
-        switch self.textView.tag{
-        case 0:
-            inImageView.charaterText = self.textView.text
-        case 1:
-            inImageView.subtitleText = self.textView.text
-        default:
-            break
-        }
-        
-        self.inImageView.previewImage()
-        
-        textView.endEditing(true)
     }
     
     func pickImageFromAlbum(){
@@ -269,6 +278,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         inImageView.image = image
         
         inImageView.previewImage()
+        updateTempImageView()
         self.state = .Name
     }
 
