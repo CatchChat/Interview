@@ -70,7 +70,7 @@ class InImageView: UIImageView {
         self.addSubview(showView)
         
         tvStationView.contentMode = UIViewContentMode.ScaleAspectFit
-        charaterView.contentMode = UIViewContentMode.ScaleAspectFit
+        charaterView.contentMode = UIViewContentMode.ScaleToFill
         showView.contentMode = UIViewContentMode.ScaleAspectFit
         charaterView.clipsToBounds = true
     }
