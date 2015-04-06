@@ -51,6 +51,7 @@ class InImageView: UIImageView {
         self.addSubview(subtitleLabel)
         
         tvStationView = UIImageView(frame: CGRectMake(10, 0, 70 , 50))
+        tvStationView.layer.shouldRasterize = true
         self.addSubview(tvStationView)
         
         charaterView = UIImageView(frame: CGRectMake(10, 0, 80 , 22))
