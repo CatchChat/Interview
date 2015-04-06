@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		0A0F02E51AD2DD7D00BDBE07 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		0A0F02E71AD2F16D00BDBE07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A81D8AD1AD2D2CE007D22BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0A81D8B81AD2D59F007D22BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0AC03AF51ACDC5D000B92BBA /* Interview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interview.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +262,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0A0F02E51AD2DD7D00BDBE07 /* zh-Hans */,
+				0A0F02E71AD2F16D00BDBE07 /* Base */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

@@ -38,7 +38,7 @@ class InImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         subtitleLabel = UILabel()
-        subtitleLabel.font = UIFont.boldSystemFontOfSize(12.0)
+        subtitleLabel.font = UIFont.boldSystemFontOfSize(13.0)
         subtitleLabel.textColor = UIColor.whiteColor()
         subtitleLabel.sizeToFit()
         subtitleLabel.shadowColor = UIColor(white: 0, alpha: 0.5)
