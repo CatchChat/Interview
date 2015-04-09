@@ -135,7 +135,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         textView.addTarget(self, action: "textViewTextChange", forControlEvents: UIControlEvents.EditingChanged)
         self.view.addSubview(textView)
         
-        changeName = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        changeName = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         changeName.frame = CGRectMake(0, inImageView.frame.size.height - offset, self.view.bounds.width/3.0, 45)
         changeName.backgroundColor = defaultLightColor
         changeName.setTitle("Name".localized, forState: UIControlState.Normal)
@@ -144,7 +144,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         changeName.alpha = 0.0
         self.view.addSubview(changeName)
         
-        changeSubtitle = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        changeSubtitle = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         changeSubtitle.frame = CGRectMake(self.view.bounds.width/3.0, inImageView.frame.size.height - offset , self.view.bounds.width/3.0, 45)
         changeSubtitle.backgroundColor = defaultLightColor
         changeSubtitle.setTitle("Subtitle".localized, forState: UIControlState.Normal)
@@ -153,7 +153,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         changeSubtitle.alpha = 0.0
         self.view.addSubview(changeSubtitle)
         
-        savePhoto = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        savePhoto = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         savePhoto.frame = CGRectMake(2*self.view.bounds.width/3.0, inImageView.frame.size.height - offset, self.view.bounds.width/3.0, 45)
         savePhoto.backgroundColor = defaultLightColor
         savePhoto.setTitle("Share".localized, forState: UIControlState.Normal)
@@ -272,8 +272,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
     }
     
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         
         inImageView.image = image
