@@ -16,6 +16,8 @@
 		0AC03B051ACDC5D000B92BBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC03B031ACDC5D000B92BBA /* LaunchScreen.xib */; };
 		0AC03B111ACDC5D000B92BBA /* InterviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC03B101ACDC5D000B92BBA /* InterviewTests.swift */; };
 		0AC03B1B1ACDC6D400B92BBA /* InImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC03B1A1ACDC6D400B92BBA /* InImageView.swift */; };
+		0AD0D4B91AF0C2520071887B /* INTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0D4B81AF0C2520071887B /* INTextField.swift */; };
+		0AD0D4BB1AF0C5770071887B /* InHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0D4BA1AF0C5770071887B /* InHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		0AC03B0F1ACDC5D000B92BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AC03B101ACDC5D000B92BBA /* InterviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTests.swift; sourceTree = "<group>"; };
 		0AC03B1A1ACDC6D400B92BBA /* InImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InImageView.swift; path = Source/InImageView.swift; sourceTree = "<group>"; };
+		0AD0D4B81AF0C2520071887B /* INTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = INTextField.swift; path = Source/INTextField.swift; sourceTree = "<group>"; };
+		0AD0D4BA1AF0C5770071887B /* InHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InHelper.swift; path = Source/InHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				0AC03B1A1ACDC6D400B92BBA /* InImageView.swift */,
+				0AD0D4B81AF0C2520071887B /* INTextField.swift */,
+				0AD0D4BA1AF0C5770071887B /* InHelper.swift */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -233,6 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD0D4B91AF0C2520071887B /* INTextField.swift in Sources */,
+				0AD0D4BB1AF0C5770071887B /* InHelper.swift in Sources */,
 				0AC03AFD1ACDC5D000B92BBA /* ViewController.swift in Sources */,
 				0AC03B1B1ACDC6D400B92BBA /* InImageView.swift in Sources */,
 				0AC03AFB1ACDC5D000B92BBA /* AppDelegate.swift in Sources */,

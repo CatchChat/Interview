@@ -36,6 +36,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     var changeName: UIButton!
     
+    var changeShow: UIButton!
+    
     var changeSubtitle: UIButton!
     
     var tempImageView: UIImageView!
@@ -61,6 +63,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.changeName.alpha = 1.0
                 self.changeSubtitle.alpha = 1.0
                 self.savePhoto.alpha = 1.0
+                self.changeShow.alpha = 1.0
                 changeName.backgroundColor = highLightColor
                 changeSubtitle.backgroundColor = defaultLightColor
                 savePhoto.backgroundColor = defaultLightColor
@@ -71,6 +74,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.changeName.alpha = 1.0
                 self.changeSubtitle.alpha = 1.0
                 self.savePhoto.alpha = 1.0
+                self.changeShow.alpha = 1.0
                 changeName.backgroundColor = defaultLightColor
                 changeSubtitle.backgroundColor = highLightColor
                 savePhoto.backgroundColor = defaultLightColor
@@ -81,6 +85,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.changeName.alpha = 1.0
                 self.changeSubtitle.alpha = 1.0
                 self.savePhoto.alpha = 1.0
+                self.changeShow.alpha = 1.0
                 changeName.backgroundColor = defaultLightColor
                 changeSubtitle.backgroundColor = defaultLightColor
                 savePhoto.backgroundColor = highLightColor
@@ -102,8 +107,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         self.view.backgroundColor = defaultLightColor
         
-        inImageView = InImageView(frame: CGRectMake(0, 0, self.view.bounds.width, (self.view.bounds.width/16)*9))
-        tempImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, (self.view.bounds.width/16)*9-50))
+        inImageView = InImageView(frame: CGRectMake(0, 0, self.view.bounds.width, (self.view.bounds.width/16)*10))
+        tempImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, (self.view.bounds.width/16)*10-50))
         tempImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         inImageView.contentMode = UIViewContentMode.ScaleAspectFill
@@ -123,7 +128,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         
-        textView = UITextField(frame: CGRectMake(0, inImageView.frame.size.height + 45.0 - offset, self.view.bounds.width, 50.0))
+        textView = INTextField(frame: CGRectMake(0, inImageView.frame.size.height + 60 - offset, self.view.bounds.width, 50.0))
         textView.userInteractionEnabled = false
         textView.delegate = self
         textView.backgroundColor = highLightColor
@@ -135,30 +140,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         textView.addTarget(self, action: "textViewTextChange", forControlEvents: UIControlEvents.EditingChanged)
         self.view.addSubview(textView)
         
-        changeName = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        changeName.frame = CGRectMake(0, inImageView.frame.size.height - offset, self.view.bounds.width/3.0, 45)
-        changeName.backgroundColor = defaultLightColor
-        changeName.setTitle("Name".localized, forState: UIControlState.Normal)
-        changeName.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
+        changeShow = buttonWith("Show".localized, "ShowButton", self.view.bounds.width/4.0, 60)
+        changeShow.addTarget(self, action: "charaterChangeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        changeShow.center = CGPoint(x: changeShow.frame.width/2.0, y: inImageView.frame.size.height+changeShow.frame.size.height/2.0)
+        changeShow.alpha = 0.0
+        self.view.addSubview(changeShow)
+        
+        changeName = buttonWith("Name".localized, "NameButton", self.view.bounds.width/4.0, 60)
         changeName.addTarget(self, action: "charaterChangeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        changeName.center = CGPoint(x: changeShow.frame.width/2.0 + changeShow.frame.width, y: changeShow.center.y)
         changeName.alpha = 0.0
         self.view.addSubview(changeName)
         
-        changeSubtitle = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        changeSubtitle.frame = CGRectMake(self.view.bounds.width/3.0, inImageView.frame.size.height - offset , self.view.bounds.width/3.0, 45)
-        changeSubtitle.backgroundColor = defaultLightColor
-        changeSubtitle.setTitle("Subtitle".localized, forState: UIControlState.Normal)
-        changeSubtitle.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
+        changeSubtitle = buttonWith("Subtitle".localized, "SubtitleButton", self.view.bounds.width/4.0, 60)
         changeSubtitle.addTarget(self, action: "subtitleChangeAction", forControlEvents: UIControlEvents.TouchUpInside)
+        changeSubtitle.center = CGPoint(x: changeShow.frame.width/2.0 + changeShow.frame.width*2, y: changeShow.center.y)
         changeSubtitle.alpha = 0.0
         self.view.addSubview(changeSubtitle)
         
-        savePhoto = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        savePhoto.frame = CGRectMake(2*self.view.bounds.width/3.0, inImageView.frame.size.height - offset, self.view.bounds.width/3.0, 45)
-        savePhoto.backgroundColor = defaultLightColor
-        savePhoto.setTitle("Share".localized, forState: UIControlState.Normal)
-        savePhoto.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
+        savePhoto = buttonWith("Share".localized, "ShareButton",  self.view.bounds.width/4.0, 60)
         savePhoto.addTarget(self, action: "donePhotoSaveChange", forControlEvents: UIControlEvents.TouchUpInside)
+        savePhoto.center = CGPoint(x: changeShow.frame.width/2.0 + changeShow.frame.width*3, y: changeShow.center.y)
         savePhoto.alpha = 0.0
         self.view.addSubview(savePhoto)
         
