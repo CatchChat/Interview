@@ -15,8 +15,10 @@ func buttonWith(name: String, image: String, width: CGFloat, height: CGFloat) ->
     button.setTitle(name, forState: UIControlState.Normal)
     button.setTitleColor(UIColor(white: 1.0, alpha: 0.5), forState: UIControlState.Normal)
     button.titleEdgeInsets = UIEdgeInsets(top: 28, left: 0, bottom: 0, right: 0)
-    button.setBackgroundImage(UIImage(named: image), forState: UIControlState.Normal)
-    button.contentMode = UIViewContentMode.ScaleAspectFit
+    var imageView = UIImageView(image: UIImage(named: image))
+    imageView.contentMode = UIViewContentMode.Center
+    imageView.frame = CGRect(x: 0, y: 5, width: width, height: height/2.0)
+    button.addSubview(imageView)
     button.titleLabel?.font = UIFont.systemFontOfSize(14.0)
     return button
 }
